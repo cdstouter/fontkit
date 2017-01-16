@@ -1,6 +1,8 @@
 export default class KernProcessor {
   constructor(font) {
     this.kern = font.kern;
+    
+    this.kerningPairs = {};
   }
 
   process(glyphs, positions) {
@@ -12,6 +14,10 @@ export default class KernProcessor {
   }
 
   getKerning(left, right) {
+    if (this.kerningPairs[left] && this.kerningPairs[left].hasOwnProperty(right)) {
+      return this.kerningPairs[left][right];
+    }
+
     let res = 0;
 
     for (let table of this.kern.tables) {
@@ -87,6 +93,8 @@ export default class KernProcessor {
       }
     }
 
+    if (!this.kerningPairs[left]) this.kerningPairs[left] = {};
+    this.kerningPairs[left][right] = res;
     return res;
   }
 }
