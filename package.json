@@ -1,7 +1,7 @@
 {
-  "name": "fontkit",
+  "name": "fontkit-cachekerning",
   "version": "1.5.2",
-  "description": "An advanced font engine for Node and the browser",
+  "description": "An advanced font engine for Node and the browser, with additional code to cache kerning for better performance.",
   "keywords": [
     "opentype",
     "font",
